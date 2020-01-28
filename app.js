@@ -20,12 +20,22 @@ app.post("/", function(req, res) {
   // 419548220020dbc1a0a1003cee22abfe-us4 api key
   //8571735389 list key
 
+  var data = {
+    members: [
+      { email_address: e,
+        status: "subscribed"
+      } ]
+  };
+
+  var json = JSON.stringify(data);
+
   var options = {
     url: "https://us4.api.mailchimp.com/3.0/lists/8571735389",
     method: "POST",
     headers: {
       "Authorization": "Vaibhav 419548220020dbc1a0a1003cee22abfe-us4"
-    }
+    },
+    body: json
   };
 
   request(options, function(error, response, body) {

@@ -37,7 +37,7 @@ app.post("/", function(req, res) {
     headers: {
       "Authorization": "Vaibhav 419548220020dbc1a0a1003cee22abfe-us4"
     },
-    body: json
+    //body: json
   };
 
   request(options, function(error, response, body) {
@@ -52,6 +52,10 @@ app.post("/", function(req, res) {
         res.sendFile(__dirname + "/failure.html");
     }
   });
+});
+
+app.post("/failure", function(req, res) {
+  res.redirect("/");
 });
 
 app.listen(3000, function() {

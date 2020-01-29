@@ -17,8 +17,6 @@ app.post("/", function(req, res) {
   var f= req.body.fname;
   var l= req.body.lname;
   var e= req.body.email;
-  // 419548220020dbc1a0a1003cee22abfe-us4 api key
-  //8571735389 list key
 
   var data = {
     members: [
@@ -44,10 +42,14 @@ app.post("/", function(req, res) {
 
   request(options, function(error, response, body) {
     if(error){
-      console.log(error);
+      res.sendFile(__dirname + "/failure.html");
     }
     else{
-      console.log(response.statusCode);
+      if(response.statusCode === 200)
+        res.sendFile(__dirname + "/success.html");
+
+      else
+        res.sendFile(__dirname + "/failure.html");
     }
   });
 });
